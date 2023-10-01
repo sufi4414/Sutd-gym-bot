@@ -4,7 +4,7 @@ from flask import Flask, request
 
 import telebot
 
-TOKEN = '5845800147:AAHmANu_9EveZMNmiviemc4AxNI33DENgGY'
+TOKEN = "5845800147:AAHmANu_9EveZMNmiviemc4AxNI33DENgGY"
 bot = telebot.TeleBot(TOKEN)
 server = Flask(__name__)
 
@@ -12,6 +12,10 @@ server = Flask(__name__)
 @bot.message_handler(commands=['start'])
 def start(message):
     bot.reply_to(message, 'Hello, ' + message.from_user.first_name)
+
+@bot.message_handler(commands=['done'])
+def start(message):
+    bot.reply_to(message, 'Attendance marked for, ' + message.from_user.first_name)
 
 
 @bot.message_handler(func=lambda message: True, content_types=['text'])
